@@ -1,8 +1,0 @@
-body{
-  color: #fff;
-  background: #000;
-
-  .test-autoprefix-loader{
-    display: flex;
-  }
-}
