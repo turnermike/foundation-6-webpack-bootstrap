@@ -12,7 +12,7 @@ console.log('ENVIRONMENT: ', env);
 
 module.exports = {
   // debug: true,
-  context: path.resolve(__dirname, './src'),
+  context: path.resolve(__dirname, '.'),
   devtool: 'source-map',
   entry: {
     app: [ 
@@ -56,25 +56,3 @@ module.exports = {
     }),
   ],
 };
-
-
-
-
-
-// module.exports = {
-//   // debug: true,
-//   entry: './src/app.js',
-//   output: {
-//     path: path.resolve('./output'),
-//     filename: 'app.js'
-//   },
-//   module: {
-//     loaders: [
-//       // { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader' }
-//       { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass!scss') }
-//     ]
-//   },
-//   plugins: [
-//     new ExtractTextPlugin({ filename: 'output/app.css', disable: false, allChunks: true })
-//   ]
-// };
