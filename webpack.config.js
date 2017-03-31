@@ -4,9 +4,13 @@ var webpack = require('webpack'),
     path = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// check for environment variables
 var env = process.env.NODE_ENV;
-console.log('ENVIRONMENT: ', env);
-
+if(typeof env === 'undefined'){
+  console.log('=================\nNODE_ENV ENVIRONMENT VARIABLE NOT DEFINED\n=================');    
+}else{ 
+  console.log('=================\nCURRENT NODE_ENV: ', env, '\n=================\n');
+}
 
 
 

@@ -9,18 +9,16 @@ npm init                         // if package.json does not already exist
 npm install                      // install dependencies
 ```
 
-## Set Environment Variable (NODE_ENV)
-Run one of these commands on the relative server. This variable is required by webpack.config.js.
+## Available Build Command
+
+### Development
 ```
-export NODE_ENV=dev             // local/development
-export NODE_ENV=staging         // staging
-export NODE_ENV=production      // production
+npm start                        // sets NODE_ENV='dev', runs webpack --watch
 ```
 
-## Build Commands
-These commands do most of the work. Use 'watch' for dev and 'build' for production deployments.
+### Production
 ```
-npm run watch                   // dev task runner
-npm run build                   // build files, no watch
+npm build                        // sets NODE_ENV='production', runs webpack -p
 ```
+
 

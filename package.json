@@ -1,14 +1,19 @@
 {
-  "name": "compile-sass",
+  "name": "foundation-6-webpack-bootstrap",
   "version": "1.0.0",
-  "description": "",
+  "description": "A starter project for Engaging Networks Page Builder Templates.",
   "main": "webpack.config.js",
   "scripts": {
-    "watch": "./node_modules/.bin/webpack --watch",
-    "build": "./node_modules/.bin/webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV='dev' ./node_modules/.bin/webpack --watch",
+    "build": "NODE_ENV='production' ./node_modules/.bin/webpack -p"
   },
-  "author": "",
+  "author": "Grassriots <info@grassriots.com>",
+  "contributors": [
+    {
+      "name": "Mike Turner",
+      "email": "mike@grassriots.com"
+    }
+  ],  
   "license": "ISC",
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
