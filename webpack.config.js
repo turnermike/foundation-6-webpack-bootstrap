@@ -31,27 +31,43 @@ module.exports = {
     filename: 'app.js'
   },
   module: {
-    loaders: [
-      { // regular css files
-        test: /\.css$/,
+
+    rules: [
+
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract({
-          use: 'css-loader?importLoaders=1',
-        }),
-      },
-      { // sass / scss loader for webpack
-        test: /\.(sass|scss)$/,
-        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                // localIdentName: '[name]__[local]___[hash:base64:5]',
+                importLoaders: 1                
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+          ]
+        })
       }
-    ]    
+    ]
+
     // loaders: [
-    //   {
-    //     test: /\.scss$/,
-    //     loader: ExtractTextPlugin.extract({ 
-    //       fallbackLoader: 'style-loader',
-    //       loader: 'css-loader!sass-loader'
-    //     })
+    //   { // regular css files
+    //     test: /\.css$/,
+    //     loader: ExtractTextPlugin.extract({
+    //       use: 'css-loader?importLoaders=1',
+    //     }),
+    //   },
+    //   { // sass / scss loader for webpack
+    //     test: /\.(sass|scss)$/,
+    //     loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
     //   }
-    // ]
+    // ]    
+
   },
   plugins: [
     new ExtractTextPlugin({ // define where to save the file

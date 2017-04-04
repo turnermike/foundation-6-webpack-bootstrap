@@ -6,9 +6,13 @@ body {
     background: #222; }
   body h1, body h2 {
     font-size: 1.2em; }
-  body .test {
+  body ._1F_wMa2LUKOITaohjfIrpL {
     color: green;
-    display: flex; }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: width 4ms ease-out;
+    transition: width 4ms ease-out; }
   body footer p {
     color: red;
     backround: black; }

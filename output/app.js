@@ -93,6 +93,7 @@ console.log("hello");
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+module.exports = {"test":"_1F_wMa2LUKOITaohjfIrpL"};
 
 /***/ }),
 /* 3 */

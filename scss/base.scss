@@ -14,7 +14,7 @@ body{
   .test{
     color: green;
     display: flex;
-    
+    transition: width 4ms ease-out;
   }
 
   footer{
