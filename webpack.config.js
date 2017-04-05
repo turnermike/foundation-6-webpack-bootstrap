@@ -45,9 +45,9 @@ module.exports = {
               options: {
                 modules: true,
                 minimize: false,
-                sourceMap: false,
-                debug: true
-                // sourceMapContents: true,
+                sourceMap: false,                           // had to set this to false for sourcemaps to work
+                debug: true,
+                sourceMapContents: true,
                 // importLoaders: 1                
               }
             },
@@ -64,13 +64,11 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                outFile: 'app.css',
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true,
+                outFile: 'app.css',                           // generated file name
+                outputStyle: 'expanded',                      // code formating for css (compressed, expanded, nested, compact)
+                sourceMap: true,                              // enable source map
+                sourceMapContents: true,                   // doesn't seem to do anything
                 debug: true
-                // sourceMap: true,
-                // sourceMapContents: true
               }
             }
           ]
