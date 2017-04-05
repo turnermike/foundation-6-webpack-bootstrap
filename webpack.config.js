@@ -1,23 +1,43 @@
 "use strict"
 
-var webpack = require('webpack'),
-    path = require('path'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+// var webpack = require('webpack'),
+//     path = require('path'),
+//     ExtractTextPlugin = require('extract-text-webpack-plugin'),
+//     GetIfUtils = require('webpack-config-utils');
+
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { getIfUtils, removeEmpty } = require('webpack-config-utils');
+
+
+var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
+const { ifProd, ifNotProd } = getIfUtils(env);
+console.log('ifProd:', ifProd('true', 'false'));
+
+// import webpack from 'webpack';
+// import path from 'path';
+// import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 // check for environment variables
-var env = process.env.NODE_ENV;
-if(typeof env === 'undefined'){
-  console.log('=================\nNODE_ENV ENVIRONMENT VARIABLE NOT DEFINED\n=================');    
-}else{ 
-  console.log('=================\nCURRENT NODE_ENV: ', env, '\n=================\n');
-}
+
+// const { ifProd, ifNotProd } = GetIfUtils(env);
+
+
+
+
+// if(typeof env === 'undefined'){
+//   console.log('=================\nNODE_ENV ENVIRONMENT VARIABLE NOT DEFINED\n=================');    
+// }else{ 
+//   console.log('=================\nCURRENT NODE_ENV: ', env, '\n=================\n');
+// }
 
 
 
 module.exports = {
   // debug: true,
   context: path.resolve(__dirname, '.'),
-  devtool: 'inline-source-map',
+  devtool: ifProd('source-map', 'cheap-eval-source-map'),           // use full source map for prod, cheap and dirty for dev
   entry: {
     app: [ 
       './js/alert.js',
