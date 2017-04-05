@@ -1,36 +1,17 @@
 "use strict"
 
-// var webpack = require('webpack'),
-//     path = require('path'),
-//     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-//     GetIfUtils = require('webpack-config-utils');
-
+// load modules
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
+const autoprefixer = require('autoprefixer');
 
-
+// environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
-const { ifProd, ifNotProd } = getIfUtils(env);
+const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
 console.log('ifProd:', ifProd('true', 'false'));
-
-// import webpack from 'webpack';
-// import path from 'path';
-// import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
-// check for environment variables
-
-// const { ifProd, ifNotProd } = GetIfUtils(env);
-
-
-
-
-// if(typeof env === 'undefined'){
-//   console.log('=================\nNODE_ENV ENVIRONMENT VARIABLE NOT DEFINED\n=================');    
-// }else{ 
-//   console.log('=================\nCURRENT NODE_ENV: ', env, '\n=================\n');
-// }
 
 
 
@@ -52,7 +33,7 @@ module.exports = {
   },
   module: {
 
-    rules: [
+    rules: removeEmpty([                                    // removeEmpty() belongs to webpack-config-utils
 
       { // sass
         test: /\.scss$/,
@@ -87,18 +68,18 @@ module.exports = {
                 outFile: 'app.css',                           // generated file name
                 outputStyle: 'expanded',                      // code formating for css (compressed, expanded, nested, compact)
                 sourceMap: true,                              // enable source map
-                sourceMapContents: true,                   // doesn't seem to do anything
+                // sourceMapContents: true,                      // doesn't seem to do anything
                 debug: true
               }
             }
           ]
         })
       }
-    ]  
+    ])  
 
   },
 
-  plugins: [
+  plugins: removeEmpty([                                      // removeEmpty() belongs to webpack-config-utils
     
     // save sass to single css file
     new ExtractTextPlugin({
@@ -111,7 +92,7 @@ module.exports = {
       options: {
         postCssLoader: {
           sourceMap: true,
-          plugins: () => [require('autoprefixer')]
+          plugins: () => [autoprefixer]
         },
         sassLoader: {
           sourceMap: true,
@@ -121,6 +102,6 @@ module.exports = {
       }
     })
 
-  ]
+  ])
 
 };
