@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "clean": "rimraf output/",
-    "start": "NODE_ENV='dev' ./node_modules/.bin/webpack --watch",
-    "build": "NODE_ENV='prod' ./node_modules/.bin/webpack -p",
+    "start": "NODE_ENV=dev webpack --watch",
+    "build": "NODE_ENV=prod webpack -p",
     "tidy": "npm run clean"
   },
   "author": "Grassriots <info@grassriots.com>",

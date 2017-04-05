@@ -16,10 +16,12 @@ console.log('ifProd:', ifProd('true', 'false'));
 
 
 module.exports = {
-  // debug: true,
-  context: path.resolve(__dirname, '.'),
+
+  context: path.resolve(__dirname, '.'),                            // base dir
+
   devtool: ifProd('source-map', 'cheap-eval-source-map'),           // use full source map for prod, cheap and dirty for dev
-  entry: {
+
+  entry: {                                                          // entry points
     app: [ 
       './js/alert.js',
       './js/main.js',
@@ -27,29 +29,30 @@ module.exports = {
       './scss/header.scss'
     ]
   },
+
   output: {
-    path: path.resolve(__dirname, './output'),
-    filename: 'app.js'
-  },
+    path: path.resolve(__dirname, './output'),                      // js output dir
+    filename: 'app.js'                                              // js bundled file name
+  }
+  ,
   module: {
 
-    rules: removeEmpty([                                    // removeEmpty() belongs to webpack-config-utils
+    rules: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
 
-      { // sass
-        test: /\.scss$/,
-        exclude: /node_modules/,
+      { 
+        test: /\.scss$/,                                            // sass files
+        exclude: /node_modules/,                                    // dirs to exclude
         loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: 'style-loader',                                 // fallback loader
           use: [
             {
               loader: 'css-loader',
               options: {
-                modules: true,
-                minimize: false,
-                sourceMap: false,                           // had to set this to false for sourcemaps to work
-                debug: true,
-                sourceMapContents: true,
-                // importLoaders: 1                
+                modules: true,                                      // enable css modules
+                minimize: false,                                    // minimize css
+                sourceMap: false,                                   // had to set this to false for sourcemaps to work
+                // sourceMapContents: true,                            // doesn't seem to do anything
+                importLoaders: 2                
               }
             },
             // 'postcss-loader',
@@ -58,7 +61,6 @@ module.exports = {
               options: {
                 sourceMap: true,
                 sourceMapContents: true,
-                debug: true
               }
             },
             // 'sass-loader'
@@ -69,7 +71,6 @@ module.exports = {
                 outputStyle: 'expanded',                      // code formating for css (compressed, expanded, nested, compact)
                 sourceMap: true,                              // enable source map
                 // sourceMapContents: true,                      // doesn't seem to do anything
-                debug: true
               }
             }
           ]
