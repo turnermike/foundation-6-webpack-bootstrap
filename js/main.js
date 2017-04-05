@@ -1,6 +1,6 @@
 
 var yell = require('./alert.js');
-yell('dude!');
+// yell('dude!');
 
 
 console.log("hello");

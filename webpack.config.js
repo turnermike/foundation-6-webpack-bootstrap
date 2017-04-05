@@ -17,7 +17,7 @@ if(typeof env === 'undefined'){
 module.exports = {
   // debug: true,
   context: path.resolve(__dirname, '.'),
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   entry: {
     app: [ 
       './js/alert.js',
@@ -34,7 +34,7 @@ module.exports = {
 
     rules: [
 
-      {
+      { // sass
         test: /\.scss$/,
         exclude: /node_modules/,
         loader: ExtractTextPlugin.extract({
@@ -44,35 +44,65 @@ module.exports = {
               loader: 'css-loader',
               options: {
                 modules: true,
-                // localIdentName: '[name]__[local]___[hash:base64:5]',
-                importLoaders: 1                
+                minimize: false,
+                sourceMap: true,
+                debug: true
+                // sourceMapContents: true,
+                // importLoaders: 1                
               }
             },
-            'postcss-loader',
-            'sass-loader'
+            // 'postcss-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                sourceMapContents: true,
+                debug: true
+              }
+            },
+            // 'sass-loader'
+            {
+              loader: 'sass-loader',
+              options: {
+                outFile: 'app.css',
+                outputStyle: 'expanded',
+                sourceMap: true,
+                sourceMapContents: true,
+                debug: true
+                // sourceMap: true,
+                // sourceMapContents: true
+              }
+            }
           ]
         })
       }
-    ]
-
-    // loaders: [
-    //   { // regular css files
-    //     test: /\.css$/,
-    //     loader: ExtractTextPlugin.extract({
-    //       use: 'css-loader?importLoaders=1',
-    //     }),
-    //   },
-    //   { // sass / scss loader for webpack
-    //     test: /\.(sass|scss)$/,
-    //     loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-    //   }
-    // ]    
+    ]  
 
   },
+
   plugins: [
-    new ExtractTextPlugin({ // define where to save the file
+    
+    // save sass to single css file
+    new ExtractTextPlugin({
       filename: 'app.css',
       allChunks: true,
     }),
-  ],
+
+    new webpack.LoaderOptionsPlugin({
+      test: /\.scss$/,
+      options: {
+        postCssLoader: {
+          sourceMap: true,
+          plugins: () => [require('autoprefixer')]
+        },
+        sassLoader: {
+          sourceMap: true,
+          includePaths: [path.resolve(__dirname, './scss')]
+        },
+        context: '/'
+      }
+    })
+
+  ]
+
 };
