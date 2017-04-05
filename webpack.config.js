@@ -33,8 +33,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './output'),                      // js output dir
     filename: 'app.js'                                              // js bundled file name
-  }
-  ,
+  },
+
+  // ------------------------------------
+  // Module
+  // ------------------------------------
   module: {
 
     rules: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
@@ -47,30 +50,27 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: {
-                modules: true,                                      // enable css modules
-                minimize: false,                                    // minimize css
-                sourceMap: false,                                   // had to set this to false for sourcemaps to work
-                // sourceMapContents: true,                            // doesn't seem to do anything
-                importLoaders: 2                
-              }
+              // options: {
+              //   modules: true,                                      // enable css modules
+              //   minimize: false,                                    // minimize css
+              //   sourceMap: false,                                   // had to set this to false for sourcemaps to work
+              //   // sourceMapContents: true,                            // doesn't seem to do anything
+              //   importLoaders: 2                
+              // }
             },
             // 'postcss-loader',
             {
               loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-                sourceMapContents: true,
-              }
+              // options: {
+              //   sourceMap: true,
+              //   sourceMapContents: true,
+              // }
             },
             // 'sass-loader'
             {
               loader: 'sass-loader',
               options: {
-                outFile: 'app.css',                           // generated file name
-                outputStyle: 'expanded',                      // code formating for css (compressed, expanded, nested, compact)
-                sourceMap: true,                              // enable source map
-                // sourceMapContents: true,                      // doesn't seem to do anything
+                outputStyle: 'expanded'                             // code formating for css (compressed, expanded, nested, compact)        
               }
             }
           ]
@@ -80,24 +80,36 @@ module.exports = {
 
   },
 
-  plugins: removeEmpty([                                      // removeEmpty() belongs to webpack-config-utils
+  // ------------------------------------
+  // Plugins
+  // ------------------------------------
+  plugins: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
     
-    // save sass to single css file
-    new ExtractTextPlugin({
-      filename: 'app.css',
-      allChunks: true,
+    new ExtractTextPlugin({                                         // save sass to css file
+      filename: 'app.css',                                          // file name
+      allChunks: true,                                              // generate a single css file for whole bundle
     }),
 
-    new webpack.LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({                               // set loader options
       test: /\.scss$/,
       options: {
+        cssLoader: {
+          modules: true,                                            // enable css modules
+          minimize: false,                                          // minimize css
+          sourceMap: false,                                         // had to set this to false for sourcemaps to work
+          sourceMapContents: true,                                  // doesn't seem to do anything
+          importLoaders: 2           
+        },
         postCssLoader: {
           sourceMap: true,
+          sourceMapContents: true,
           plugins: () => [autoprefixer]
         },
         sassLoader: {
-          sourceMap: true,
-          includePaths: [path.resolve(__dirname, './scss')]
+          includePaths: [path.resolve(__dirname, './scss')],        // files to include
+          outFile: 'app.css',                                       // output css file name
+          sourceMap: true,                                          // source map for browser dev tools
+          sourceMapContents: true                                   // i don't think this works
         },
         context: '/'
       }

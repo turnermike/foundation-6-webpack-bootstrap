@@ -47,3 +47,5 @@ A helpful chrome dev tools inspector for node.
 
 2. CLI will return some results. Copy and paste the URL provide into Chrome.
 
+3. Debug
+
