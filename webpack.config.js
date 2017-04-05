@@ -45,7 +45,7 @@ module.exports = {
               options: {
                 modules: true,
                 minimize: false,
-                sourceMap: true,
+                sourceMap: false,
                 debug: true
                 // sourceMapContents: true,
                 // importLoaders: 1                

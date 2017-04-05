@@ -1,3 +1,3 @@
 module.exports = function (what) {
-  alert('Hello ' + what + '!');
+  alert('Hello ' + what + '! Yo!');
 };
