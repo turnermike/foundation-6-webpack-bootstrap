@@ -72,6 +72,15 @@ module.exports = {
                 resources: [
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables'),
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/print'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/code'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tables'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/buttons'),
                   
                 ]
               }

@@ -14,9 +14,9 @@ body{
   .test-element{
     color: green;
     display: flex;
-    transition: width 4ms ease-out;
+    transition: width 4ms ease-out; // autoprefixer test
     border:none;
-    @include size(100%, 200px);
+    @include size(100%, 200px); // mixin test
   }
 
   footer{
