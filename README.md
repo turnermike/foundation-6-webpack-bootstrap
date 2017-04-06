@@ -13,12 +13,13 @@ npm install                      // install dependencies
 
 ### Development
 ```
-npm start                        // sets NODE_ENV='dev', runs webpack --watch
+npm start                        // sets NODE_ENV=dev, runs webpack --watch
+npm run build:dev                // sets NODE_ENV=dev, runs webpack (no watch)
 ```
 
 ### Production
 ```
-npm build                        // sets NODE_ENV='production', runs webpack -p
+npm build                        // sets NODE_ENV=prod, runs webpack -p
 ```
 
 
