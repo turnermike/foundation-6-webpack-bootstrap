@@ -95,21 +95,21 @@ module.exports = {
       options: {
         cssLoader: {
           modules: true,                                            // enable css modules
-          minimize: false,                                          // minimize css
-          sourceMap: false,                                         // had to set this to false for sourcemaps to work
-          sourceMapContents: true,                                  // doesn't seem to do anything
+          minimize: ifProd(true, false),                            // minimize css
+          sourceMap: ifProd(false, true),                           // had to set this to false for sourcemaps to work
+          // sourceMapContents: true,                                  // doesn't seem to do anything
           importLoaders: 2           
         },
         postCssLoader: {
-          sourceMap: true,
-          sourceMapContents: true,
+          sourceMap: ifProd(false, true),                            // source map
+          // sourceMapContents: true,                                  // doesn't seem to do anything
           plugins: () => [autoprefixer]
         },
         sassLoader: {
           includePaths: [path.resolve(__dirname, './scss')],        // files to include
           outFile: 'app.css',                                       // output css file name
-          sourceMap: true,                                          // source map for browser dev tools
-          sourceMapContents: true                                   // i don't think this works
+          sourceMap: ifProd(false, true),                                          // source map for browser dev tools
+          // sourceMapContents: true                                   // doesn't seem to do anything
         },
         context: '/'
       }
