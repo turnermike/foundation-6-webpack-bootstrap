@@ -3,10 +3,13 @@
 // load modules
 const webpack = require('webpack');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const BellOnBundleErrorPlugin = require('bell-on-bundler-error-plugin');
+const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
-const autoprefixer = require('autoprefixer');
+
 
 // environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
@@ -75,6 +78,14 @@ module.exports = {
           name: './fonts/[name]-[hash].[ext]',
           limit: 10000
         }
+      },
+
+      {
+        test: /bootstrap-sass\/assets\/javascripts\//,
+        loader: 'imports-loader',
+        options: {
+          jQuery: 'jquery'
+        }
       }
 
     ])  
@@ -87,6 +98,10 @@ module.exports = {
   plugins: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
     
     new ProgressBarPlugin(),                                        // display a progress bar during build
+
+    new BellOnBundleErrorPlugin(),
+
+    new FixDefaultImportPlugin(),
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -101,7 +116,6 @@ module.exports = {
       name: 'vendor',                                                // file name
       filename: 'vendor.js',
       minChunks: Infinity
-
     }),
 
 
