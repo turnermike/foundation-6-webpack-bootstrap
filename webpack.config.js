@@ -11,7 +11,7 @@ const autoprefixer = require('autoprefixer');
 // environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
-console.log('ifProd:', ifProd('true', 'false'));
+// console.log('ifProd:', ifProd('true', 'false'));
 
 
 
@@ -85,6 +85,8 @@ module.exports = {
   // ------------------------------------
   plugins: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
     
+    new ProgressBarPlugin(),                                        // display a progress bar during build
+
     new ExtractTextPlugin({                                         // save sass to css file
       filename: 'app.css',                                          // file name
       allChunks: true,                                              // generate a single css file for whole bundle
@@ -108,7 +110,7 @@ module.exports = {
         sassLoader: {
           includePaths: [path.resolve(__dirname, './scss')],        // files to include
           outFile: 'app.css',                                       // output css file name
-          sourceMap: ifProd(false, true),                                          // source map for browser dev tools
+          sourceMap: ifProd(false, true),                           // source map for browser dev tools
           // sourceMapContents: true                                   // doesn't seem to do anything
         },
         context: '/'
