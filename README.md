@@ -1,6 +1,11 @@
 
-# Foundation 6 Webpack Bootstrap
+# Foundation 6 Webpack Boilerplate
 A starter/bootstrap project using Webpack and Foundation.
+
+Using:
+- Webpack 2
+- Bootstrap 3
+
 
 ## Create Project
 These are one time run commands. Only needed after cloning a repo or starting from scratch.
@@ -44,7 +49,7 @@ A helpful chrome dev tools inspector for node.
 
 1. Retreive the chrome dev tools url.
 
-```node-nightly --inspect --debug-brk ./webpack.config.js```
+```sudo node-nightly --inspect --debug-brk ./webpack.config.js```
 
 2. CLI will return some results. Copy and paste the URL provide into Chrome.
 

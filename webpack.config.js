@@ -25,14 +25,21 @@ module.exports = {
     app: [ 
       './js/alert.js',
       './js/main.js',
-      './scss/base.scss',
-      './scss/header.scss'
+      './scss/app.scss'
+      // './scss/base.scss',
+      // './scss/header.scss'
+    ]
+  },
+
+  resolve: {
+    modules: [
+      path.resolve(__dirname, './node_modules')
     ]
   },
 
   output: {
     path: path.resolve(__dirname, './output'),                      // js output dir
-    filename: 'app.js'                                              // js bundled file name
+    filename: '[name].js'                                           // js bundled file name
   },
 
   // ------------------------------------
@@ -58,7 +65,18 @@ module.exports = {
             }
           ]
         })
+      },
+
+      {
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        include: [path.resolve(__dirname, './fonts')],
+        loader: 'url-loader',
+        options: {
+          name: './fonts/[name]-[hash].[ext]',
+          limit: 10000
+        }
       }
+
     ])  
 
   },
@@ -69,6 +87,23 @@ module.exports = {
   plugins: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
     
     new ProgressBarPlugin(),                                        // display a progress bar during build
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    }),
+
+    // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
+
+    new webpack.optimize.CommonsChunkPlugin({ 
+      name: 'vendor',                                                // file name
+      filename: 'vendor.js',
+      minChunks: Infinity
+
+    }),
+
 
     new ExtractTextPlugin({                                         // save sass to css file
       filename: 'app.css',                                          // file name
@@ -99,7 +134,7 @@ module.exports = {
         },
         context: '/'
       }
-    }),
+    }),    
 
     ifProd(new webpack.optimize.UglifyJsPlugin({                    // js minification, applied to prod only
       compress: {
