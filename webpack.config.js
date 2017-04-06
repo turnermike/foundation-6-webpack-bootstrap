@@ -36,7 +36,7 @@ module.exports = {
 
   resolve: {
     modules: [
-      path.resolve(__dirname, './node_modules')
+      path.resolve(__dirname, 'node_modules')
     ]
   },
 
@@ -54,7 +54,7 @@ module.exports = {
 
       { 
         test: /\.scss$/,                                            // sass files
-        exclude: /node_modules/,                                    // dirs to exclude
+        // exclude: /node_modules/,                                    // dirs to exclude
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',                                 // fallback loader
           use: [
@@ -64,6 +64,16 @@ module.exports = {
               loader: 'sass-loader',
               options: {
                 outputStyle: 'expanded'                             // code formating for css (compressed, expanded, nested, compact)        
+              }
+            },
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: [
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss'),
+                  
+                ]
               }
             }
           ]
@@ -81,7 +91,7 @@ module.exports = {
       },
 
       {
-        test: /bootstrap-sass\/assets\/javascripts\//,
+        test: /bootstrap-sass\/assets\/javascripts\//,              // serve jQuery to bootstrap scripts
         loader: 'imports-loader',
         options: {
           jQuery: 'jquery'

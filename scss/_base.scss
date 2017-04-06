@@ -11,11 +11,12 @@ body{
     font-size: 1.2em;
   }
 
-  .test{
+  .test-element{
     color: green;
     display: flex;
     transition: width 4ms ease-out;
     border:none;
+    @include size(100%, 200px);
   }
 
   footer{
