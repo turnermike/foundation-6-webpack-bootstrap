@@ -11,7 +11,7 @@ const autoprefixer = require('autoprefixer');
 // environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
-// console.log('ifProd:', ifProd('true', 'false'));
+console.log('ifProd:', ifProd('true', 'false'));
 
 
 
@@ -48,25 +48,8 @@ module.exports = {
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',                                 // fallback loader
           use: [
-            {
-              loader: 'css-loader',
-              // options: {
-              //   modules: true,                                      // enable css modules
-              //   minimize: false,                                    // minimize css
-              //   sourceMap: false,                                   // had to set this to false for sourcemaps to work
-              //   // sourceMapContents: true,                            // doesn't seem to do anything
-              //   importLoaders: 2                
-              // }
-            },
-            // 'postcss-loader',
-            {
-              loader: 'postcss-loader',
-              // options: {
-              //   sourceMap: true,
-              //   sourceMapContents: true,
-              // }
-            },
-            // 'sass-loader'
+            'css-loader',
+            'postcss-loader',
             {
               loader: 'sass-loader',
               options: {
@@ -92,8 +75,9 @@ module.exports = {
       allChunks: true,                                              // generate a single css file for whole bundle
     }),
 
-    new webpack.LoaderOptionsPlugin({                               // set loader options
-      test: /\.scss$/,
+    new webpack.LoaderOptionsPlugin({                               // sass loader options
+      test: /\.scss$/,                                              // applied to this file extension(s)
+      debug: ifProd(false, true),                                   // debug setting
       options: {
         cssLoader: {
           modules: true,                                            // enable css modules
@@ -115,7 +99,15 @@ module.exports = {
         },
         context: '/'
       }
-    })
+    }),
+
+    ifProd(new webpack.optimize.UglifyJsPlugin({                    // js minification, applied to prod only
+      compress: {
+        screw_ie8: true,                                            // ignore ie8
+        warnings: true                                              // show warnings
+      },
+      sourceMap: true                                               // source map
+    }))
 
   ])
 
