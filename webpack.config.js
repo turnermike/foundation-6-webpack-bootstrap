@@ -16,7 +16,8 @@ var env = process.env.NODE_ENV;                                       // NODE_EN
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
 console.log('ifProd:', ifProd('true', 'false'));
 
-var image_path = "'../images'";
+var image_path = ifProd("'https://biglongengagingnetworksurl.com/images'", "'../images'");
+console.log('image_path', image_path);
 
 module.exports = {
 
