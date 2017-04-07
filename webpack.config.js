@@ -54,23 +54,16 @@ module.exports = {
 
       { 
         test: /\.scss$/,                                            // sass files
-        // exclude: /node_modules/,                                    // dirs to exclude
+        exclude: /node_modules/,                                    // dirs to exclude
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',                                 // fallback loader
           use: [
             'css-loader',
-            // {
-            //   loader: 'css-loader',
-            //   options: {
-            //     data: "$image-path: " + image_path + ";"
-            //   }
-            // },
             'postcss-loader',
             {
               loader: 'sass-loader',
               options: {
                 outputStyle: 'expanded',                             // code formating for css (compressed, expanded, nested, compact)        
-                // data: "$image-path: " + process.env.NODE_ENV + ";"
                 data: "$image-path: " + image_path + ";"
               }
             },
@@ -119,15 +112,6 @@ module.exports = {
           useRelativePath: true
         }
       },
-
-      // {
-      //   test: /\.(png|svg|jpg|gif)$/,
-      //   loader: 'url-loader',
-      //   options: {
-      //     name: './images/[name]-[hash].[ext]',
-      //     limit: 100000
-      //   }
-      // },
 
       {
         test: /bootstrap-sass\/assets\/javascripts\//,              // serve jQuery to bootstrap scripts
