@@ -2,6 +2,7 @@
  * Override SASS Variables Here
  */
 
+$bootstrap-sass-asset-helper: true;           // must remain true to maintain relative paths for fonts
 
 //
 // Colors
@@ -12,4 +13,4 @@ $brand-primary: #ebebeb;
 //
 // Iconography
 //
-$bootstrap-sass-asset-helper: true;           // must remain true to maintain relative paths for fonts
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';

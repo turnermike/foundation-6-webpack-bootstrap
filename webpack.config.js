@@ -9,11 +9,14 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const BellOnBundleErrorPlugin = require('bell-on-bundler-error-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
+const pkg = require('./package.json');
 
-// look for --watch parameter used via cli/npm run
-var isWatched = process.argv.indexOf('--watch');
-isWatched = (isWatched > 0) ? true : false;
-console.log('isWatched',isWatched);
+console.log('pkg.dependencies', pkg.dependencies);
+
+// // look for --watch parameter used via cli/npm run
+// var isWatched = process.argv.indexOf('--watch');
+// isWatched = (isWatched > 0) ? true : false;
+// console.log('isWatched',isWatched);
 
 // environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
@@ -30,23 +33,28 @@ module.exports = {
 
   devtool: ifProd('source-map', 'cheap-eval-source-map'),           // use full source map for prod, cheap and dirty for dev
 
+  // cache: false,
+
   entry: {                                                          // entry points
     app: [ 
       './js/alert.js',
       './js/main.js',
       './scss/app.scss'
-    ]
-  },
-
-  resolve: {
-    modules: [
-      path.resolve(__dirname, 'node_modules')
-    ]
+    ],
+    // vendor: ['jquery', 'sticky-js']
+    vendor: Object.keys(pkg.dependencies)
   },
 
   output: {
     path: path.resolve(__dirname, './output'),                      // js output dir
-    filename: '[name].js'                                           // js bundled file name
+    filename: '[name].js',                                           // js bundled file name
+    chunkFilename: '[name]-[chunkhash].js'
+  },
+
+  resolve: {
+    modules: [
+      path.resolve(__dirname, './node_modules'),
+    ]
   },
 
   // ------------------------------------
@@ -147,10 +155,15 @@ module.exports = {
       }
     }),
 
-    new webpack.optimize.CommonsChunkPlugin({ 
-      name: 'vendor',                                                // file name
-      filename: 'vendor.js',
-      minChunks: Infinity
+    // new webpack.optimize.CommonsChunkPlugin({ 
+    //   name: 'vendor',                                                // file name
+    //   filename: 'vendor.js',
+    //   minChunks: Infinity
+    // }),
+
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      Sticky: 'sticky-js'
     }),
 
 
@@ -191,7 +204,7 @@ module.exports = {
 
     ifProd(new webpack.optimize.UglifyJsPlugin({                    // js minification, applied to prod only
       debug: ifProd(false, true),
-      minimize: ifProd(true, false),
+      minimize: ifProd(false, false),
       sourceMap: true,
       output: {
         comments: ifProd(false, true),

@@ -12,22 +12,36 @@ body{
     font-size: 1.2em;
   }
 
-  .test-element{
-    color: green;
-    display: flex;
-    transition: width 4ms ease-out; // autoprefixer test
-    border:none;
-    @include size(100%, 200px); // mixin test
-  }
 
-  .image-test{
-    background: url(#{$image-path}/750x480.png);
-    // background: url(../images/750x480.png);
-    width: 750px;
-    height: 480px;
+  .main{
+
+    height: auto;
+    background: #000;
+
+    .test-element{
+      color: green;
+      display: flex;
+      transition: width 4ms ease-out; // autoprefixer test
+      border:none;
+      @include size(100%, 200px); // mixin test
+    }
+
+    .image-test{
+      background: url(#{$image-path}/750x480.png);
+      width: 750px;
+      height: 480px;
+    }   
+
+    .glyphicon-search{
+      color: #fff;
+      font-size: 24px;
+    } 
   }
 
   footer{
+
+    height: 1400px;
+    background: #ddd;
 
     p{
       color: lightblue;
