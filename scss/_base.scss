@@ -19,6 +19,12 @@ body{
     @include size(100%, 200px); // mixin test
   }
 
+  .image-test{
+    background: url('../images/750x480.png');
+    width: 750px;
+    height: 480px;
+  }
+
   footer{
 
     p{

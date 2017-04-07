@@ -94,7 +94,16 @@ module.exports = {
         loader: 'url-loader',
         options: {
           name: './fonts/[name]-[hash].[ext]',
-          limit: 10000
+          limit: 100000
+        }
+      },
+
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          name: './images/[name]-[hash].[ext]',
+          limit: 100000
         }
       },
 
