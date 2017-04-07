@@ -16,6 +16,7 @@ var env = process.env.NODE_ENV;                                       // NODE_EN
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
 console.log('ifProd:', ifProd('true', 'false'));
 
+// set image paths for css
 var image_path = ifProd("'https://biglongengagingnetworksurl.com/images'", "'../images'");
 console.log('image_path', image_path);
 
@@ -30,8 +31,6 @@ module.exports = {
       './js/alert.js',
       './js/main.js',
       './scss/app.scss'
-      // './scss/base.scss',
-      // './scss/header.scss'
     ]
   },
 
@@ -79,17 +78,19 @@ module.exports = {
               loader: 'sass-resources-loader',
               options: {
                 resources: [
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss'),
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/print'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/code'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tables'),
-                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/buttons'),
+                  path.resolve(__dirname, 'scss/_sass_vars.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_normalize.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_print.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_glyphicons.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_type.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_code.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_grid.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_tables.scss'),
+                  path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_buttons.scss')
+
                   
                 ]
               }
@@ -99,18 +100,19 @@ module.exports = {
       },
 
       {
-        test: /\.(woff2?|ttf|eot|svg)$/,
-        include: [path.resolve(__dirname, './fonts')],
-        loader: 'url-loader',
+        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        include: [path.resolve(__dirname, '.')],
+        loader: 'file-loader',
         options: {
-          name: './fonts/[name]-[hash].[ext]',
-          limit: 100000
+          name: '[name].[ext]',
+          useRelativePath: true
+          // limit: 100000
         }
       },
 
       {
         test: /\.(png|svg|jpg|gif)$/,
-        // loader: 'url-loader'                  // generates a hash object
+        // loader: 'url-loader'                  
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
