@@ -10,6 +10,10 @@ const BellOnBundleErrorPlugin = require('bell-on-bundler-error-plugin');
 const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
+// look for --watch parameter used via cli/npm run
+var isWatched = process.argv.indexOf('--watch');
+isWatched = (isWatched > 0) ? true : false;
+console.log('isWatched',isWatched);
 
 // environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
@@ -130,7 +134,7 @@ module.exports = {
   // ------------------------------------
   plugins: removeEmpty([                                            // removeEmpty() belongs to webpack-config-utils
     
-    new ProgressBarPlugin(),                                        // display a progress bar during build
+    // new ProgressBarPlugin(),                                        // display a progress bar during build
 
     new BellOnBundleErrorPlugin(),
 
@@ -142,8 +146,6 @@ module.exports = {
         return module.context && module.context.indexOf('node_modules') !== -1;
       }
     }),
-
-    // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
 
     new webpack.optimize.CommonsChunkPlugin({ 
       name: 'vendor',                                                // file name

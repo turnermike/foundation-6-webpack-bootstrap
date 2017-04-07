@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "clean": "rimraf output/",
-    "start": "NODE_ENV=dev webpack --watch",
-    "build:dev": "NODE_ENV=dev webpack --colors --bail",
+    "start": "NODE_ENV=dev webpack --watch --colors --progress",
+    "build:dev": "NODE_ENV=dev webpack --colors --bail --progress",
     "build:prod": "NODE_ENV=prod webpack -p",
     "tidy": "npm run clean"
   },
