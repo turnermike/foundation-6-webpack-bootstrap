@@ -80,7 +80,7 @@ module.exports = {
                 resources: [
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss'),
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss'),
-                  path.resolve(__dirname, 'scss/_sass_vars.scss'),
+                  path.resolve(__dirname, 'scss/_bootstrap_sass_vars.scss'),
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_normalize.scss'),
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_print.scss'),
                   path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_glyphicons.scss'),

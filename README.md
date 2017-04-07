@@ -28,14 +28,19 @@ npm build                        // sets NODE_ENV=prod, runs webpack -p
 ```
 
 
-# Debugging
+## SASS
 
-## Debug Webpack with Chrome Dev Tools and node-nightly
+Bootstrap SASS variables can be overridden using ```scss/_bootstrap_sass_vars.scss```. Simply copy the variable declaration from
+```node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss``` and remove the "!default" flag.
+
+## Debugging
+
+### Debug Webpack with Chrome Dev Tools and node-nightly
 
 A helpful chrome dev tools inspector for node. 
 [Source:](https://medium.com/webpack/webpack-bits-learn-and-debug-webpack-with-chrome-dev-tools-da1c5b19554)
 
-### Setup
+#### Setup
 
 1. Install node-nightly
 
@@ -45,7 +50,7 @@ A helpful chrome dev tools inspector for node.
 
 ``node-nightly```
 
-### How to Use It
+#### How to Use It
 
 1. Retreive the chrome dev tools url.
 
