@@ -190,11 +190,17 @@ module.exports = {
     }),    
 
     ifProd(new webpack.optimize.UglifyJsPlugin({                    // js minification, applied to prod only
-      compress: {
+      debug: ifProd(false, true),
+      minimize: ifProd(true, false),
+      sourceMap: true,
+      output: {
+        comments: ifProd(false, true),
+      },
+      compressor: {
         screw_ie8: true,                                            // ignore ie8
         warnings: true                                              // show warnings
       },
-      sourceMap: true                                               // source map
+      
     }))
 
   ])
