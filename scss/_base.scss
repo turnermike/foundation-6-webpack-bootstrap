@@ -20,7 +20,8 @@ body{
   }
 
   .image-test{
-    background: url('../images/750x480.png');
+    background: url(#{$image-path}/750x480.png);
+    // background: url(../images/750x480.png);
     width: 750px;
     height: 480px;
   }

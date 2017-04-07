@@ -16,6 +16,7 @@ var env = process.env.NODE_ENV;                                       // NODE_EN
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
 console.log('ifProd:', ifProd('true', 'false'));
 
+var image_path = "'../images'";
 
 module.exports = {
 
@@ -58,11 +59,19 @@ module.exports = {
           fallback: 'style-loader',                                 // fallback loader
           use: [
             'css-loader',
+            // {
+            //   loader: 'css-loader',
+            //   options: {
+            //     data: "$image-path: " + image_path + ";"
+            //   }
+            // },
             'postcss-loader',
             {
               loader: 'sass-loader',
               options: {
-                outputStyle: 'expanded'                             // code formating for css (compressed, expanded, nested, compact)        
+                outputStyle: 'expanded',                             // code formating for css (compressed, expanded, nested, compact)        
+                // data: "$image-path: " + process.env.NODE_ENV + ";"
+                data: "$image-path: " + image_path + ";"
               }
             },
             {
@@ -100,12 +109,22 @@ module.exports = {
 
       {
         test: /\.(png|svg|jpg|gif)$/,
-        loader: 'url-loader',
+        // loader: 'url-loader'                  // generates a hash object
+        loader: 'file-loader',
         options: {
-          name: './images/[name]-[hash].[ext]',
-          limit: 100000
+          name: '[name].[ext]',
+          useRelativePath: true
         }
       },
+
+      // {
+      //   test: /\.(png|svg|jpg|gif)$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     name: './images/[name]-[hash].[ext]',
+      //     limit: 100000
+      //   }
+      // },
 
       {
         test: /bootstrap-sass\/assets\/javascripts\//,              // serve jQuery to bootstrap scripts
@@ -170,8 +189,12 @@ module.exports = {
         sassLoader: {
           includePaths: [path.resolve(__dirname, './scss')],        // files to include
           outFile: 'app.css',                                       // output css file name
-          sourceMap: ifProd(false, true),                           // source map for browser dev tools
+          // sourceMap: ifProd(false, true),                           // source map for browser dev tools
           // sourceMapContents: true                                   // doesn't seem to do anything
+
+        },
+        urlLoader: {
+          publicPath: '/'
         },
         context: '/'
       }
