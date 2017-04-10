@@ -34,6 +34,21 @@ Bootstrap SASS variables can be overridden using ```scss/_bootstrap_sass_vars.sc
 ```node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss``` and remove the "!default" flag.
 
 
+## Javascript
+
+To add a new Javascript library/node module. 
+
+1. Use the following command to add it to package.json as a dependency.
+```
+npm install --save <package_name>
+```
+
+2. Add the module alias to webpack.config.js. The alias is the package name as it appears in package.json.
+
+
+
+
+
 ## Debugging
 
 ### Debug Webpack with Chrome Dev Tools and node-nightly
