@@ -25,7 +25,6 @@ var options = {
   Suffix: '...'
 };
 var desc = truncatise(testString, options);
-console.log('truncate-test', desc);
 $('.truncate-test p').html(desc);
 
 
