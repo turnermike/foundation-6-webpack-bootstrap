@@ -3,7 +3,7 @@
 // load modules
 const webpack = require('webpack');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
+//const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const BellOnBundleErrorPlugin = require('bell-on-bundler-error-plugin');
