@@ -11,8 +11,6 @@ const FixDefaultImportPlugin = require('webpack-fix-default-import-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 const pkg = require('./package.json');
 
-console.log('pkg.dependencies', pkg.dependencies);
-
 // // look for --watch parameter used via cli/npm run
 // var isWatched = process.argv.indexOf('--watch');
 // isWatched = (isWatched > 0) ? true : false;
@@ -21,11 +19,16 @@ console.log('pkg.dependencies', pkg.dependencies);
 // environment setup
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
-console.log('ifProd:', ifProd('true', 'false'));
 
 // set image paths for css
-var image_path = ifProd("'https://biglongengagingnetworksurl.com/images'", "'../images'");
+var image_path = ifProd("'http://mydomain.com/images'", "'../images'");
+
+// debug output
+console.log('Start Debug -------------------------------------------------------');
+console.log('ifProd:', ifProd('true', 'false'));
+console.log('pkg.dependencies', pkg.dependencies);
 console.log('image_path', image_path);
+console.log('End Debug ---------------------------------------------------------');
 
 module.exports = {
 
@@ -47,7 +50,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './output'),                      // js output dir
-    filename: '[name].js',                                           // js bundled file name
+    filename: '[name].js',                                          // js bundled file name
     chunkFilename: '[name]-[chunkhash].js'
   },
 

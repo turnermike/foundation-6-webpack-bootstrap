@@ -10,11 +10,11 @@
     "build:prod": "NODE_ENV=prod webpack -p",
     "tidy": "npm run clean"
   },
-  "author": "Grassriots <info@grassriots.com>",
+  "author": "Mike Turner <turner.mike@gmail.com>",
   "contributors": [
     {
       "name": "Mike Turner",
-      "email": "mike@grassriots.com"
+      "email": "turner.mike@gmail.com"
     }
   ],
   "license": "ISC",
