@@ -20,15 +20,19 @@ const pkg = require('./package.json');
 var env = process.env.NODE_ENV;                                       // NODE_ENV variable set in package.json for each run ("scripts") command
 const { ifProd, ifNotProd } = getIfUtils(env);                        // define ifProd and ifNotProd functions
 
-// set image paths for css
+// set image/font paths
 var image_path = ifProd("'http://mydomain.com/images'", "'../images'");
+var font_path = ifProd("'http://mydomain.com/fonts'", "'../fonts'");
 
 // debug output
-console.log('Start Debug -------------------------------------------------------');
+console.log('-------------------------------------------------------');
+console.log('-- Start Debug --');
 console.log('ifProd:', ifProd('true', 'false'));
 console.log('pkg.dependencies', pkg.dependencies);
 console.log('image_path', image_path);
-console.log('End Debug ---------------------------------------------------------');
+console.log('font_path', font_path);
+console.log('-- End Debug --');
+console.log('-------------------------------------------------------');
 
 module.exports = {
 
@@ -79,7 +83,10 @@ module.exports = {
               loader: 'sass-loader',
               options: {
                 outputStyle: 'expanded',                             // code formating for css (compressed, expanded, nested, compact)        
-                data: "$image-path: " + image_path + ";"
+                data: "$image-path: " + image_path + "; $font-path: " + font_path + ";"             // pass path vars
+                // data: "$image-path: " + image_path + ";",
+
+
               }
             },
             {
