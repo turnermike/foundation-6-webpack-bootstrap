@@ -40,7 +40,7 @@ module.exports = {
 
   context: path.resolve(__dirname, '.'),                            // base dir
 
-  devtool: 'source-map',           // use full source map for prod, cheap and dirty for dev
+  devtool: ifProd('false', 'source-map'),           // use full source map for prod, cheap and dirty for dev
 
   cache: false,
 
@@ -167,22 +167,15 @@ module.exports = {
     }),
 
     // Source Maps
-    new webpack.SourceMapDevToolPlugin({
+    ifProd(new webpack.SourceMapDevToolPlugin({
       filename: '[name].js.map',
       exclude: ['vendor.js']
-    }),
+    })),
 
     // js
     ifProd(new webpack.optimize.UglifyJsPlugin({
       exclude: /node_modules/,
-      debug: true,
-      minimize: true,
-      sourceMap: true,
-      output: {
-        comments: true,
-      },
-      compressor: {
-        screw_ie8: true,
+      uglifyOptions: {
         warnings: true
       }
     }))
