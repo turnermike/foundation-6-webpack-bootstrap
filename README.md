@@ -1,10 +1,9 @@
-
 # Foundation 6 Webpack Boilerplate
 A starter/bootstrap project using Webpack and Foundation.
 
 Using:
 - Webpack 2
-- Bootstrap 3
+- Foundation 6
 
 
 ## Create Project

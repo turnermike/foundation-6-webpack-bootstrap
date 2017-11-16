@@ -1,30 +1,30 @@
-
 /**
- * Bootstrap stylesheets are loaded via webpack.config.js via sass-resources-loader.
+ * App 
  *
- * The following are loaded by default. The others must be added manually.
+ * Root SCSS file used to call imports.
  *
- * bootstrap/variables
- * bootstrap/mixins
- * bootstrap/normalize
- * bootstrap/print
- * bootstrap/glyphicons
- * bootstrap/scaffolding
- * bootstrap/type
- * bootstrap/code
- * bootstrap/grid
- * bootstrap/tables
- * bootstrap/forms
- * bootstrap/buttons
  */
 
 
-
-
-
-
-/**
- * Custom style sheets
+/* foundation */
+@import "lib/foundation";
+@import "lib/normalize";
+@import "lib/variables";
+@import "lib/functions";
+@import "lib/mixins";
+@import "lib/print";
+@import "lib/foundation-icons";
+/*
+ * additional foundation styles are added here
+ *
  */
-@import 'base';
-@import 'header';
+
+/* custom theme styles */
+@import "styles/dev-debug";
+@import "styles/header";
+@import "styles/footer";
+@import "styles/callout";
+/*
+ * custom style are added here
+ */
+

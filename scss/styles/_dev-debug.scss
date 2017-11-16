@@ -1,0 +1,96 @@
+/**
+ * _dev-debug.scss
+ *
+ * Add an :after psuedo class to body to detect current screensize via JS.
+ *
+ * There's a hidden input field in footer.php with an id of txtInput. If value is 
+ * set to true, a small box will appear in the bottom left corner with screen info.
+ *
+ */
+
+
+/* ==========================================================================
+   Small Up
+   ========================================================================== */
+
+body:after{
+  content: "small";  
+}
+
+#debug-message {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    color: #fff;
+    background: pink;
+    p {
+        margin: 0;
+    }
+    .small, .medium, .large, .exlarge {
+        display: none;
+    }
+    .small {
+        display: block;
+    }
+}
+
+.image-path-test{
+  display: block;
+  width: 274px;
+  height: 63px;
+  background: url(#{$image-path}/login-logo.png);
+}
+
+.fi-heart{
+  font-size: 80px;
+}
+
+
+/* ==========================================================================
+    Medium Up
+   ========================================================================== */
+@media #{$medium-up} {
+
+  body:after{
+    content: "medium";  
+  }
+
+  #debug-message {
+      background: lightblue;
+      .small, .large, .exlarge {
+          display: none;
+      }
+      .medium {
+          display: block;
+      }
+  }
+
+}
+
+
+/* ==========================================================================
+    Large Up
+   ========================================================================== */
+@media #{$large-up} {
+  
+  body:after{
+    content: "large";  
+  }
+
+  #debug-message {
+      background: lightgreen;
+      .small, .medium, .exlarge {
+          display: none;
+      }
+      .large {
+          display: block;
+      }
+  }
+
+}
+
