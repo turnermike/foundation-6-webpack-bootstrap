@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 /**
  * initDevDebug
- * 
+ *
  * If the value of #txtDebug (hidden input located in footer.php) is set to true,
  * a small box will appear in the bottom left corner of the screen with screen
  * size info.
@@ -70,7 +70,7 @@ function initDevDebug() {
       $('#debug-message').empty();
       $('#debug-message').append('<p class="small">small</p><p class="medium">medium</p><p class="large">large</p><p class="exlarge">extra large</p>');
       $('#debug-message').append('<p>width: ' + window.innerWidth + '</p>');
-  });  
+  });
 
 } // initDebDebug
 
@@ -82,7 +82,7 @@ function initDevDebug() {
  * via _global.scss
  * Posibilities include: phone, mobile, tablet, small-desktop, medium-desktop, large-desktop
  *
- * @return (string) windowSize 
+ * @return (string) windowSize
  *
  */
 function getBrowserSize(){

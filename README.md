@@ -6,10 +6,15 @@ Using:
 - Foundation 6
 
 
-## Create Project
+## Setup Project
 These are one time run commands. Only needed after cloning a repo or starting from scratch.
 ```
 npm install                      // install dependencies
+```
+
+## Run Babel
+```
+npm run babel
 ```
 
 ## Available Build Command

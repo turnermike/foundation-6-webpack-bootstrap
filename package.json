@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "clean": "rimraf output/",
-    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "babel": "./node_modules/.bin/babel --presets es2015 js/main.js -o output/main.bundle.js",
     "start": "NODE_ENV=dev webpack --watch --colors --bail --progress",
     "build:dev": "NODE_ENV=dev webpack --colors --bail --progress",
     "build:prod": "NODE_ENV=prod webpack -p",
@@ -21,6 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.6",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
