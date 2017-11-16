@@ -10,7 +10,6 @@ Using:
 ## Create Project
 These are one time run commands. Only needed after cloning a repo or starting from scratch.
 ```
-npm init                         // if package.json does not already exist
 npm install                      // install dependencies
 ```
 
@@ -36,7 +35,7 @@ Bootstrap SASS variables can be overridden using ```scss/_bootstrap_sass_vars.sc
 
 ## Javascript
 
-To add a new Javascript library/node module, add it to package.json under 'dependencies'. Webpack will automatically 
+To add a new Javascript library/node module, add it to package.json under 'dependencies'. Webpack will automatically
 load node modules to the vendor.js file once added to package.json. No update need to webpack.config.js.
 ```
 npm install --save <package_name>
@@ -48,7 +47,7 @@ npm install --save <package_name>
 
 ### Debug Webpack with Chrome Dev Tools and node-nightly
 
-A helpful chrome dev tools inspector for node. 
+A helpful chrome dev tools inspector for node.
 [Source:](https://medium.com/webpack/webpack-bits-learn-and-debug-webpack-with-chrome-dev-tools-da1c5b19554)
 
 #### Setup
@@ -59,7 +58,7 @@ A helpful chrome dev tools inspector for node.
 
 2. Add command to CLI
 
-``node-nightly```
+```node-nightly```
 
 #### How to Use It
 
