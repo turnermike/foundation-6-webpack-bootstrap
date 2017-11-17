@@ -7,7 +7,7 @@ MAINTAINER Mike Turner <turner.mike@gmail.com>
 # ==========================================================================
 
 # public directory
-WORKDIR ../deploy/public_html
+WORKDIR ./public_html
 
 # required by nano editor
 ENV TERM xterm
@@ -45,17 +45,20 @@ RUN yum install --enablerepo=epel,remi-php70,remi -y \
 # ==========================================================================
 
 # add the files from deploy to public_html
-# ADD ./deploy ./
-ADD ../deploy ./
+# there was a problem using ADD for files in a parent directory. The Dockerfile location
+# serves as the current context. To work around this, a sym link was created in the deploy
+# directory to reference the Dockerfile in the build directory. That way, all docker configs
+# are located in the build directory.
+ADD ./deploy ./
 
 # set file permissions
 # RUN chmod 444 ./.htaccess
 
 # overwrite the php.ini file
-ADD php/php.ini /etc/php.ini
+ADD build/php/php.ini /etc/php.ini
 
 # overwrite the httpd.conf file
-ADD httpd/httpd.conf /etc/httpd/conf/httpd.conf
+ADD build/httpd/httpd.conf /etc/httpd/conf/httpd.conf
 
 # # copy key/cert files
 # ADD ./build/httpd/ca.crt /etc/pki/tls/certs/ca.crt
