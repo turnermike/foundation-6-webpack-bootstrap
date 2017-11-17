@@ -4,6 +4,7 @@ A starter/bootstrap project using Webpack and Foundation.
 Using:
 - Webpack 2
 - Foundation 6
+- Docker
 
 
 ## Setup Project
@@ -12,7 +13,21 @@ These are one time run commands. Only needed after cloning a repo or starting fr
 npm install                      // install dependencies
 ```
 
-## Run Babel
+## Docker
+
+### Start Docker (In detached mode)
+```
+docker-compose up -d
+```
+
+### Rebuild a running container.
+If edits are made to Docker configs, a rebuild would be required.
+```
+docker-compose up --build -d
+```
+
+
+## Run Babel (not required)
 ```
 npm run babel
 ```
@@ -31,20 +46,13 @@ npm build                        // sets NODE_ENV=prod, runs webpack -p
 ```
 
 
-## SASS
-
-Bootstrap SASS variables can be overridden using ```scss/_bootstrap_sass_vars.scss```. Simply copy the variable declaration from
-```node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss``` and remove the "!default" flag.
-
-
-## Javascript
+## Node Modules
 
 To add a new Javascript library/node module, add it to package.json under 'dependencies'. Webpack will automatically
 load node modules to the vendor.js file once added to package.json. No update need to webpack.config.js.
 ```
 npm install --save <package_name>
 ```
-
 
 
 ## Debugging

@@ -36,8 +36,6 @@ RUN yum install --enablerepo=epel,remi-php70,remi -y \
                               php-gd \
                               php-mbstring \
                               php-mcrypt \
-                              # php-mysqlnd \
-                              # php-pdo \
                               php-xml \
                               php-xdebug
 
@@ -48,24 +46,24 @@ RUN yum install --enablerepo=epel,remi-php70,remi -y \
 
 # add the files from deploy to public_html
 # ADD ./deploy ./
-ADD ./deploy ./
+ADD ./ ./
 
 # set file permissions
 # RUN chmod 444 ./.htaccess
 
 # overwrite the php.ini file
-ADD ./php/php.ini /etc/php.ini
+ADD ./build/php/php.ini /etc/php.ini
 
 # overwrite the httpd.conf file
-ADD ./httpd/httpd.conf /etc/httpd/conf/httpd.conf
+ADD ./build/httpd/httpd.conf /etc/httpd/conf/httpd.conf
 
 # # copy key/cert files
-# ADD ./httpd/ca.crt /etc/pki/tls/certs/ca.crt
-# ADD ./httpd/ca.key /etc/pki/tls/private/ca.key
-# ADD ./httpd/ca.csr /etc/pki/tls/private/ca.csr
+# ADD ./build/httpd/ca.crt /etc/pki/tls/certs/ca.crt
+# ADD ./build/httpd/ca.key /etc/pki/tls/private/ca.key
+# ADD ./build/httpd/ca.csr /etc/pki/tls/private/ca.csr
 
 # # overwrite the ssl.conf file
-# ADD ./httpd/ssl.conf /etc/httpd/conf.d/ssl.conf
+# ADD ./build/httpd/ssl.conf /etc/httpd/conf.d/ssl.conf
 
 
 # ==========================================================================
