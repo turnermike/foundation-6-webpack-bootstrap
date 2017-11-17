@@ -115,7 +115,7 @@ module.exports = {
         include: [path.resolve(__dirname, '../deploy/fonts')],
         loader: 'file-loader',
         options: {
-          name: '../deploy/fonts/[name].[ext]',
+          name: 'fonts/[name].[ext]',
           // limit: 100000
         }
       },
@@ -126,7 +126,7 @@ module.exports = {
         include: [path.resolve(__dirname, '../deploy/images')],
         loader: 'file-loader',
         options: {
-          name: '../deploy/images/[name].[ext]',
+          name: 'images/[name].[ext]',
           // limit: 100000
         }
       },
