@@ -7,7 +7,7 @@ MAINTAINER Mike Turner <turner.mike@gmail.com>
 # ==========================================================================
 
 # public directory
-WORKDIR ./public_html
+WORKDIR ../deploy/public_html
 
 # required by nano editor
 ENV TERM xterm
