@@ -1,0 +1,13 @@
+version: '2'
+services:
+
+  f6wb-web:
+    build: .
+    container_name: f6wb-web
+    # image: "744241446859.dkr.ecr.us-east-1.amazonaws.com/foundation-6-webpack-bootstrap:latest"
+    image: "hi-hatconsulting/f6wb-web"
+    ports:
+      - "80:80"
+    volumes:
+      - ../deploy:/public_html
+    restart: always
