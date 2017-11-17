@@ -9,5 +9,5 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ../deploy:/public_html
+      - ./deploy:/public_html
     restart: always
