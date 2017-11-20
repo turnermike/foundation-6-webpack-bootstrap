@@ -16,6 +16,7 @@ npm install                      // install dependencies
 ```
 
 ## Docker
+Run docker commands from project root directory. Same location as the `docker-compose.yml`.
 
 ### Start Docker (In detached mode)
 ```
@@ -32,6 +33,7 @@ docker-compose up --build -d
 ## Webpack
 Webpack is used as the task runner for SASS compilation including autoprefixing,
 CSS/JS minificattion and source maps. Generated files are saved to the 'deploy/output' directory.
+Run these commands from the deploy directory, same location as `webpack.config.js`.
 
 ### Available Commands
 
@@ -49,6 +51,16 @@ load node modules to the vendor.js file once added to package.json. No update ne
 ```
 npm install --save <package_name>
 ```
+
+
+## Foundation Scripts/Styles
+Foundation provides the ability to enable all functionality, or the bits and peices that you would like to enable.
+
+To enable a Javascript file, please remove the comment from the file in question within:
+```js/foundation-config.js```
+
+To enable a SASS stylesheet, please remove the comment from the file in question within:
+```scss/lib/_foundation-config.scss```
 
 
 ## Debugging
