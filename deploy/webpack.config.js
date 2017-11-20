@@ -137,15 +137,15 @@ module.exports = {
       },
 
 
-      // // JS/ES6
-      // {
-      //   test: /\.(js(x?)|es6)$/,
-      //   loader: 'babel-loader',
-      //   // exclude: /node_modules/,
-      //   query: {
-      //     presets: ['es2015']
-      //   }
-      // }
+      // JS/ES6
+      {
+        test: /\.(js(x?)|es6)$/,
+        loader: 'babel-loader',
+        // exclude: /node_modules/,
+        query: {
+          presets: ['es2015']
+        }
+      }
 
     ])
 
@@ -175,7 +175,7 @@ module.exports = {
     }),
 
     // Source Maps
-    ifProd(new webpack.SourceMapDevToolPlugin({
+    ifNotProd(new webpack.SourceMapDevToolPlugin({
       filename: '[name].js.map',
       exclude: ['vendor.js']
     })),

@@ -4,12 +4,12 @@
   "description": "A project bootstrap using Foundation framework, Webpack and Docker.",
   "main": "webpack.config.js",
   "scripts": {
-    "clean": "node_modules/.bin/rimraf ../deploy/output/",
-    "babel": "node_modules/.bin/babel --presets es2015 deploy/js/main.js -o deploy/output/main.js",
+    "clean": "./node_modules/.bin/rimraf ./output/",
+    "tidy": "npm run clean",
+    "babel": "./node_modules/.bin/babel --presets es2015 deploy/js/main.js -o deploy/output/main.js",
     "start": "NODE_PATH=./node_modules NODE_ENV=dev webpack --watch --colors --bail --progress",
     "build:dev": "NODE_PATH=./node_modules NODE_ENV=dev node_modules/.bin/webpack --colors --bail --progress",
-    "build:prod": "NODE_PATH=./node_modules NODE_ENV=prod webpack -p",
-    "tidy": "npm run clean"
+    "build:prod": "NODE_PATH=./node_modules NODE_ENV=prod webpack -p"
   },
   "author": "Mike Turner <turner.mike@gmail.com>",
   "contributors": [

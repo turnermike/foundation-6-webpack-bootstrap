@@ -12,7 +12,7 @@ var windowSize;
 
 // custom modue example
 var customModuleExample = require('./custom-module.js');
-customModuleExample('dudeski!');
+customModuleExample('dudeski!!!');
 
 // dom ready
 $(document).ready(function(){
