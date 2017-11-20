@@ -55,18 +55,18 @@ ADD ./deploy ./
 # RUN chmod 444 ./.htaccess
 
 # overwrite the php.ini file
-ADD ./build/php/php.ini /etc/php.ini
+ADD ./docker-config/php/php.ini /etc/php.ini
 
 # overwrite the httpd.conf file
-ADD ./build/httpd/httpd.conf /etc/httpd/conf/httpd.conf
+ADD ./docker-config/httpd/httpd.conf /etc/httpd/conf/httpd.conf
 
 # # copy key/cert files
-# ADD ./build/httpd/ca.crt /etc/pki/tls/certs/ca.crt
-# ADD ./build/httpd/ca.key /etc/pki/tls/private/ca.key
-# ADD ./build/httpd/ca.csr /etc/pki/tls/private/ca.csr
+# ADD ./docker-config/httpd/ca.crt /etc/pki/tls/certs/ca.crt
+# ADD ./docker-config/httpd/ca.key /etc/pki/tls/private/ca.key
+# ADD ./docker-config/httpd/ca.csr /etc/pki/tls/private/ca.csr
 
 # # overwrite the ssl.conf file
-# ADD ./build/httpd/ssl.conf /etc/httpd/conf.d/ssl.conf
+# ADD ./docker-config/httpd/ssl.conf /etc/httpd/conf.d/ssl.conf
 
 
 # ==========================================================================
