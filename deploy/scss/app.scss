@@ -5,14 +5,10 @@
  *
  */
 
+@import "lib/foundation-config";
 
-
-
-/* foundation */
-@import "lib/foundation";
-@import "lib/normalize";
+/* foundation overrides and componenets */
 @import "lib/variables";
-@import "lib/functions";
 @import "lib/mixins";
 @import "lib/print";
 @import "lib/foundation-icons";

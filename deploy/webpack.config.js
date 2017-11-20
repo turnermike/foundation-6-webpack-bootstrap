@@ -141,7 +141,7 @@ module.exports = {
         test: /\.(js(x?)|es6)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        include: path.resolve(__dirname, './js'),
+        // include: path.resolve(__dirname, './js'),
         query: {
           presets: ['es2015']
         }
