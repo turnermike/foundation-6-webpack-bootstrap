@@ -19,7 +19,7 @@ var jsModules = {
   $: 'jquery',
   jQuery: 'jquery',
   'window.jQuery': 'jquery',
-  foundation: 'foundation-sites',
+  // foundation: 'foundation-sites',
   truncatise: 'truncatise'
 }
 
@@ -48,7 +48,7 @@ module.exports = {
 
   entry: {                                                          // entry points
     app: [
-      // './foundation-sites.config.js',                        // NODE_PATH is used in package.json to set the
+      // '../deploy/js/foundation-sites.config.js',                        // NODE_PATH is used in package.json to set the
       '../deploy/js/main.js',
       '../deploy/scss/app.scss'
     ],
@@ -67,6 +67,10 @@ module.exports = {
       // path.resolve(__dirname, './foundation-sites.config.js'),
       path.resolve(__dirname, 'node_modules'),                    // easily resolve node modules using import
     ]
+  },
+
+  externals: {
+    foundation: 'Foundation'
   },
 
   // ------------------------------------

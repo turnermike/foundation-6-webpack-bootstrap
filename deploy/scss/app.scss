@@ -1,5 +1,5 @@
 /**
- * App 
+ * App
  *
  * Root SCSS file used to call imports.
  *
@@ -14,10 +14,7 @@
 @import "lib/mixins";
 @import "lib/print";
 @import "lib/foundation-icons";
-/*
- * additional foundation styles are added here
- *
- */
+
 
 /* custom theme styles */
 @import "styles/dev-debug";

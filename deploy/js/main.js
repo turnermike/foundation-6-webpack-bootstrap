@@ -5,6 +5,7 @@
  *
  */
 
+
 import { foundation } from 'foundation-sites';
 
 var windowSize;

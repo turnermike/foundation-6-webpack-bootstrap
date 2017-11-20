@@ -48,7 +48,8 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-config-utils": "^2.3.0",
-    "webpack-fix-default-import-plugin": "^1.0.1"
+    "webpack-fix-default-import-plugin": "^1.0.1",
+    "what-input": "^5.0.3"
   },
   "dependencies": {
     "truncatise": "0.0.6"
