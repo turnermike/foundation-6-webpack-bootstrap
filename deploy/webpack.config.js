@@ -19,7 +19,7 @@ var jsModules = {
   $: 'jquery',
   jQuery: 'jquery',
   'window.jQuery': 'jquery',
-  // foundation: 'foundation-sites',
+  foundation: 'foundation-sites'
   // truncatise: 'truncatise'
 }
 
@@ -35,7 +35,7 @@ console.log('imagePath: ', imagePath);
 console.log('fontPath: ', fontPath);
 console.log('jsModules', jsModules);
 console.log('__dirname', __dirname);
-// console.log('test: ', path.resolve(__dirname, 'scss'));
+console.log('path.resolve test: ', path.resolve(__dirname, 'scss'));
 console.log('--------------------------- End Debug Output ---------------------------\n');
 
 module.exports = {
@@ -67,7 +67,7 @@ module.exports = {
     ]
   },
 
-  externals: {
+  externals: {                                                      // dont bundle
     jQuery: 'jQuery',
     foundation: 'Foundation'
   },
@@ -141,6 +141,7 @@ module.exports = {
         test: /\.(js(x?)|es6)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        include: path.resolve(__dirname, './js'),
         query: {
           presets: ['es2015']
         }

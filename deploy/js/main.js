@@ -1,12 +1,11 @@
 /**
  * main.js
  *
- * vendor modules loaded via webpack.config.js under plugins webpack.providerPlugin
- *
  */
 
-import foundation from './lib/foundation.js';       // load foundation and control which s
 
+// import modules
+import { foundation } from './foundation.js';                         // individual foundation scripts can be loaded here
 import truncatise from 'truncatise';
 
 var windowSize;
