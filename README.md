@@ -1,5 +1,5 @@
 # Foundation 6 Webpack Boilerplate
-A starter/bootstrap project using Webpack and Foundation.
+A starter/bootstrap project for static websites using Webpack and Foundation.
 
 Using:
 - Webpack 2
@@ -9,7 +9,9 @@ Using:
 
 ## Setup Project
 These are one time run commands. Only needed after cloning a repo or starting from scratch.
+The installation will need to be run from the ```build``` directory.
 ```
+cd build
 npm install                      // install dependencies
 ```
 
@@ -27,23 +29,17 @@ docker-compose up --build -d
 ```
 
 
-## Run Babel (not required)
-```
-npm run babel
-```
+## Webpack
+Webpack is used as the task runner for SASS compilation including autoprefixing,
+CSS/JS minificattion and source maps. Generated files are saved to the 'deploy/output' directory.
 
-## Available Build Command
+### Available Commands
 
-### Development
-```
-npm start                        // sets NODE_ENV=dev, runs webpack --watch
-npm run build:dev                // sets NODE_ENV=dev, runs webpack (no watch)
-```
+### Remove/Tidy the 'output' Directory
+```npm run tidy```
 
-### Production
-```
-npm build                        // sets NODE_ENV=prod, runs webpack -p
-```
+#### Watch files. Used durring development to automatically detect changes and execute.
+```npm run start```
 
 
 ## Node Modules
