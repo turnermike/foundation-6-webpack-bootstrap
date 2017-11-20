@@ -48,7 +48,7 @@ module.exports = {
 
   entry: {                                                          // entry points
     app: [
-      './foundation-sites.config.js',                        // NODE_PATH is used in package.json to set the
+      // './foundation-sites.config.js',                        // NODE_PATH is used in package.json to set the
       '../deploy/js/main.js',
       '../deploy/scss/app.scss'
     ],
@@ -64,6 +64,7 @@ module.exports = {
 
   resolve: {
     modules: [
+      // path.resolve(__dirname, './foundation-sites.config.js'),
       path.resolve(__dirname, 'node_modules'),                    // easily resolve node modules using import
     ]
   },
@@ -130,6 +131,7 @@ module.exports = {
           // limit: 100000
         }
       },
+
 
       // // JS/ES6
       // {
