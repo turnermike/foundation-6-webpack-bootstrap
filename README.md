@@ -9,9 +9,9 @@ Using:
 
 ## Setup Project
 These are one time run commands. Only needed after cloning a repo or starting from scratch.
-The installation will need to be run from the ```build``` directory.
+The installation will need to be run from the ```deploy``` directory.
 ```
-cd build
+cd deploy
 npm install                      // install dependencies
 ```
 
