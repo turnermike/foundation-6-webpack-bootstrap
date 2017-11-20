@@ -5,8 +5,9 @@
  *
  */
 
+import foundation from './lib/foundation.js';       // load foundation and control which s
 
-import { foundation } from 'foundation-sites';
+import truncatise from 'truncatise';
 
 var windowSize;
 

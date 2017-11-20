@@ -20,7 +20,7 @@ var jsModules = {
   jQuery: 'jquery',
   'window.jQuery': 'jquery',
   // foundation: 'foundation-sites',
-  truncatise: 'truncatise'
+  // truncatise: 'truncatise'
 }
 
 // set image/font paths for css
@@ -63,11 +63,12 @@ module.exports = {
 
   resolve: {
     modules: [
-      path.resolve(__dirname, 'node_modules'),                    // easily resolve node modules using import
+      path.resolve(__dirname, './node_modules'),                    // easily resolve node modules using import
     ]
   },
 
   externals: {
+    jQuery: 'jQuery',
     foundation: 'Foundation'
   },
 
@@ -139,7 +140,7 @@ module.exports = {
       {
         test: /\.(js(x?)|es6)$/,
         loader: 'babel-loader',
-        // exclude: /node_modules/,
+        exclude: /node_modules/,
         query: {
           presets: ['es2015']
         }
