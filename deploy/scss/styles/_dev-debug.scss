@@ -3,7 +3,7 @@
  *
  * Add an :after psuedo class to body to detect current screensize via JS.
  *
- * There's a hidden input field in footer.php with an id of txtInput. If value is 
+ * There's a hidden input field in footer.php with an id of txtInput. If value is
  * set to true, a small box will appear in the bottom left corner with screen info.
  *
  */
@@ -14,7 +14,7 @@
    ========================================================================== */
 
 body:after{
-  content: "small";  
+  content: "small";
 }
 
 #debug-message {
@@ -57,7 +57,7 @@ body:after{
 @media #{$medium-up} {
 
   body:after{
-    content: "medium";  
+    content: "medium";
   }
 
   #debug-message {
@@ -77,9 +77,9 @@ body:after{
     Large Up
    ========================================================================== */
 @media #{$large-up} {
-  
+
   body:after{
-    content: "large";  
+    content: "large";
   }
 
   #debug-message {
