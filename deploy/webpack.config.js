@@ -35,7 +35,6 @@ console.log('imagePath: ', imagePath);
 console.log('fontPath: ', fontPath);
 console.log('jsModules', jsModules);
 console.log('__dirname', __dirname);
-console.log('path.resolve test: ', path.resolve(__dirname, 'scss'));
 console.log('--------------------------- End Debug Output ---------------------------\n');
 
 module.exports = {
