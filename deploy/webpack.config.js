@@ -135,26 +135,18 @@ module.exports = {
         }
       },
 
-
-      // // JS/ES6
-      // {
-      //   test: /\.(js(x?)|es6)$/,
-      //   loader: 'babel-loader',
-      //   exclude: /node_modules/,
-      //   include: path.resolve(__dirname, './js'),                           // process js dir with babel
-      //   query: {
-      //     presets: ['es2015']
-      //   }
-      // }
-
       // JS/ES6
       {
         test: /\.(js(x?)|es6)$/,
+        // exclude: [
+        //   path.resolve(__dirname, './node-modules')
+        // ],
+        // include: [
+        //   path.resolve(__dirname, './js')
+        // ],
         use: [
           {
             loader: 'babel-loader',
-            // exclude: /node_modules/,
-            // include: path.resolve(__dirname, './js'),                           // process js dir with babel
             options:{
               presets: ['es2015']
             }
