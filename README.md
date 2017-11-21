@@ -2,8 +2,11 @@
 A starter/bootstrap project for static websites using Webpack and Foundation.
 
 Using:
+
 - Webpack 2
+
 - Foundation 6
+
 - Docker
 
 
@@ -37,11 +40,21 @@ Run these commands from the deploy directory, same location as `webpack.config.j
 
 ### Available Commands
 
-### Remove/Tidy the 'output' Directory
+#### Remove/Tidy
+Removes the ```output``` directory for housekeeping.
 ```npm run tidy```
 
-#### Watch files. Used durring development to automatically detect changes and execute.
+#### Watch
+Used durring development to automatically detect changes and build.
 ```npm run start```
+
+#### Build for Development
+Keeps code expanded and adds source maps.
+```npm run build:dev```
+
+#### Build for Production
+Minifies code and does not include source maps.
+```npm run build:prod```
 
 
 ## Node Modules
@@ -63,9 +76,13 @@ To enable a SASS stylesheet, please remove the comment from the file in question
 ```scss/lib/_foundation-config.scss```
 
 
-## Debugging
+-----------------------------
 
-### Debug Webpack with Chrome Dev Tools and node-nightly
+
+## Extras
+
+### Webpack Debugging
+Debug Webpack with Chrome Dev Tools and node-nightly
 
 A helpful chrome dev tools inspector for node.
 [Source:](https://medium.com/webpack/webpack-bits-learn-and-debug-webpack-with-chrome-dev-tools-da1c5b19554)
