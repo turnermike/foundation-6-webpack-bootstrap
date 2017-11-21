@@ -73,6 +73,9 @@ ADD ./docker-config/httpd/httpd.conf /etc/httpd/conf/httpd.conf
 #  Clean up
 # ==========================================================================
 
+# update
+RUN yum update -y
+
 # clean up installer
 RUN yum clean all
 
