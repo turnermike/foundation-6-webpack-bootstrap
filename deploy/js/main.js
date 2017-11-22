@@ -14,12 +14,16 @@ var windowSize;
 var customModuleExample = require('./custom-module.js');
 customModuleExample('dudeski!!!');
 
+
+
 // dom ready
 $(document).ready(function(){
 
   // try{
 
-    initDevDebug();
+    if(window.location.href.indexOf('0.0.0.0') > 0){
+      initDevDebug();
+    }
 
     // set the windowSize variable on window resize, trigger is used for page load
     $(window).on('resize', function() {

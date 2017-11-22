@@ -137,12 +137,12 @@ module.exports = {
       // JS/ES6
       {
         test: /\.(js(x?)|es6)$/,
-        // exclude: [
-        //   path.resolve(__dirname, './node-modules')
-        // ],
-        // include: [
-        //   path.resolve(__dirname, './js')
-        // ],
+        exclude: [
+          path.resolve(__dirname, './node-modules')
+        ],
+        include: [
+          path.resolve(__dirname, './js')
+        ],
         use: [
           {
             loader: 'babel-loader',
