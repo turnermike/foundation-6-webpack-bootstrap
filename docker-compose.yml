@@ -7,7 +7,7 @@ services:
     # image: "744241446859.dkr.ecr.us-east-1.amazonaws.com/foundation-6-webpack-bootstrap:latest"
     image: "hi-hatconsulting/f6wb-web"
     ports:
-      - "80:80"
+      - "81:81"
     volumes:
       - ./deploy:/public_html
     restart: always
