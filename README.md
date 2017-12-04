@@ -76,6 +76,11 @@ To enable a SASS stylesheet, please remove the comment from the file in question
 ```scss/lib/_foundation-config.scss```
 
 
+-----------------------------
+
+## To do
+
+1. Copy image loader functionality added to my McDs project.
 
 -----------------------------
 
