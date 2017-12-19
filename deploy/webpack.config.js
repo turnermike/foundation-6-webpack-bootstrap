@@ -101,7 +101,7 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, './scss')],
+                includePaths: [path.resolve(__dirname, '../scss')],
                 sourceMap: ifProd(false, true),
                 sourceComments: ifProd(false, true),
                 outputStyle: ifProd('compact', 'expanded'),                             // code formating for css (compressed, expanded, nested, compact)
@@ -112,27 +112,73 @@ module.exports = {
         })
       },
 
-      // FONTS
-      {
+      // FONTS (PRODUCTION)
+      // Will generate new files and copy to app/public/output/fonts/
+      ifProd({
         test: /\.(woff|woff2|ttf|eot|svg)$/,
         include: [path.resolve(__dirname, './fonts')],
         loader: 'file-loader',
         options: {
           name: 'fonts/[name].[ext]',
-          // limit: 100000
+          limit: 100000
         }
-      },
+      }),
 
-      // IMAGES
-      {
+      // FONTS (DEV)
+      // Does not generate new files.
+      ifNotProd({
+        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        include: [path.resolve(__dirname, './fonts')],
+        exclude: /node_modules/,
+        loader: 'url-loader'
+      }),
+
+      // IMAGES (PRODUCTION)
+      ifProd({
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+              limit: 100000
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: false,
+              bypassOnDebug: true,
+              gifsicle: {
+                interlaced: false
+              },
+              optipng: {
+                optimizationLevel: 7
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              }
+            }
+          }
+        ]
+      }),
+
+      // IMAGES (DEV)
+      ifNotProd({
         test: /\.(png|svg|jpg|gif)$/,
         include: [path.resolve(__dirname, './images')],
-        loader: 'file-loader',
-        options: {
-          name: 'images/[name].[ext]',
-          // limit: 100000
-        }
-      },
+        exclude: /node_modules/,
+        loader: 'url-loader',
+        // options: {
+        //   name: 'images/[name].[ext]',
+        //   // limit: 100000
+        // }
+      }),
 
       // JS/ES6
       {
