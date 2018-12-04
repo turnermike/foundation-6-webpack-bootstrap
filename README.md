@@ -1,54 +1,96 @@
-
 # Foundation 6 Webpack Boilerplate
-A starter/bootstrap project using Webpack and Foundation.
+A starter/bootstrap project for static websites using Webpack and Foundation.
 
 Using:
+
 - Webpack 2
-- Bootstrap 3
+
+- Foundation 6
+
+- Docker
 
 
-## Create Project
+## Setup Project
 These are one time run commands. Only needed after cloning a repo or starting from scratch.
+The installation will need to be run from the ```deploy``` directory.
 ```
-npm init                         // if package.json does not already exist
+cd deploy
 npm install                      // install dependencies
 ```
 
-## Available Build Command
+## Docker
+Run docker commands from project root directory. Same location as the `docker-compose.yml`.
 
-### Development
+### Start Docker (In detached mode)
 ```
-npm start                        // sets NODE_ENV=dev, runs webpack --watch
-npm run build:dev                // sets NODE_ENV=dev, runs webpack (no watch)
-```
-
-### Production
-```
-npm build                        // sets NODE_ENV=prod, runs webpack -p
+docker-compose up -d
 ```
 
+### Rebuild a running container.
+If edits are made to Docker configs, a rebuild would be required.
+```
+docker-compose up --build -d
+```
 
-## SASS
 
-Bootstrap SASS variables can be overridden using ```scss/_bootstrap_sass_vars.scss```. Simply copy the variable declaration from
-```node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss``` and remove the "!default" flag.
+## Webpack
+Webpack is used as the task runner for SASS compilation including autoprefixing,
+CSS/JS minificattion and source maps. Generated files are saved to the 'deploy/output' directory.
+Run these commands from the deploy directory, same location as `webpack.config.js`.
+
+### Available Commands
+
+#### Remove/Tidy
+Removes the ```output``` directory for housekeeping.
+```npm run tidy```
+
+#### Watch
+Used durring development to automatically detect changes and build.
+```npm run start```
+
+#### Build for Development
+Keeps code expanded and adds source maps.
+```npm run build:dev```
+
+#### Build for Production
+Minifies code and does not include source maps.
+```npm run build:prod```
 
 
-## Javascript
+## Node Modules
 
-To add a new Javascript library/node module, add it to package.json under 'dependencies'. Webpack will automatically 
+To add a new Javascript library/node module, add it to package.json under 'dependencies'. Webpack will automatically
 load node modules to the vendor.js file once added to package.json. No update need to webpack.config.js.
 ```
 npm install --save <package_name>
 ```
 
 
+## Foundation Scripts/Styles
+Foundation provides the ability to enable all functionality, or the bits and peices that you would like to enable.
 
-## Debugging
+To enable a Javascript file, please remove the comment from the file in question within:
+```js/foundation-config.js```
 
-### Debug Webpack with Chrome Dev Tools and node-nightly
+To enable a SASS stylesheet, please remove the comment from the file in question within:
+```scss/lib/_foundation-config.scss```
 
-A helpful chrome dev tools inspector for node. 
+
+-----------------------------
+
+## To do
+
+1. Copy image loader functionality added to my McDs project.
+
+-----------------------------
+
+
+## Extras
+
+### Webpack Debugging
+Debug Webpack with Chrome Dev Tools and node-nightly
+
+A helpful chrome dev tools inspector for node.
 [Source:](https://medium.com/webpack/webpack-bits-learn-and-debug-webpack-with-chrome-dev-tools-da1c5b19554)
 
 #### Setup
@@ -59,7 +101,7 @@ A helpful chrome dev tools inspector for node.
 
 2. Add command to CLI
 
-``node-nightly```
+```node-nightly```
 
 #### How to Use It
 

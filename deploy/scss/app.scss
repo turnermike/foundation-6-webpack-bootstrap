@@ -1,0 +1,27 @@
+/**
+ * App
+ *
+ * Root SCSS file used to call imports.
+ *
+ */
+
+
+/* select foundation sass modules to load in this file */
+@import "lib/foundation-config";
+
+/* foundation overrides and componenets */
+@import "lib/variables";
+@import "lib/mixins";
+@import "lib/print";
+@import "lib/foundation-icons";
+
+
+/* custom theme styles */
+@import "styles/dev-debug";
+@import "styles/header";
+@import "styles/footer";
+@import "styles/callout";
+/*
+ * custom style are added here
+ */
+

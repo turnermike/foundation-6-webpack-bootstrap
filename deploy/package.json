@@ -1,0 +1,59 @@
+{
+  "name": "foundation-6-webpack-bootstrap",
+  "version": "1.0.0",
+  "description": "A project bootstrap using Foundation framework, Webpack and Docker.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "clean": "./node_modules/.bin/rimraf ./output/",
+    "tidy": "npm run clean",
+    "babel": "./node_modules/.bin/babel --presets es2015 deploy/js/main.js -o deploy/output/main.js",
+    "start": "NODE_PATH=./node_modules NODE_ENV=dev webpack --watch --colors --bail --progress",
+    "build:dev": "NODE_PATH=./node_modules NODE_ENV=dev node_modules/.bin/webpack --colors --bail --progress",
+    "build:prod": "NODE_PATH=./node_modules NODE_ENV=prod webpack -p"
+  },
+  "author": "Mike Turner <turner.mike@gmail.com>",
+  "contributors": [
+    {
+      "name": "",
+      "email": ""
+    }
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.5",
+    "foundation-sites": "^6.4.4-rc1",
+    "foundation-sites-loader": "^1.0.1",
+    "imports-loader": "^0.7.1",
+    "inline-source-map": "^0.6.2",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.5.1",
+    "postcss-loader": "^2.0.8",
+    "postcss-smart-import": "^0.7.5",
+    "progress-bar-webpack-plugin": "^1.9.3",
+    "resolve-url-loader": "^2.0.2",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.3",
+    "sass-resources-loader": "^1.2.1",
+    "script-loader": "^0.7.2",
+    "source-map": "^0.6.1",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-config-utils": "^2.3.0",
+    "webpack-fix-default-import-plugin": "^1.0.1",
+    "what-input": "^5.0.3"
+  },
+  "dependencies": {
+    "truncatise": "0.0.6"
+  }
+}
